@@ -1,32 +1,21 @@
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { BookCard } from "../components/BookCard";
 
-const categories = ["Fiction", "Non-Fiction", "Sci-Fi"];
 
 export const Home = () => {
-  const books = useSelector(state => state.books.books.slice(0, 3)); // top 3
+  const books = useSelector((state) => state.books.books.slice(0, 4)); // top 4 books
 
   return (
-    <>
-      <h1>Welcome to the Online Library</h1>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Welcome to the Online Library</h1>
+      <h2 className="text-xl font-semibold mb-4">Featured Books</h2>
 
-      <h2>Categories</h2>
-      <ul>
-        {categories.map(cat => (
-          <li key={cat}>
-            <Link to={`/books/${cat}`}>{cat}</Link>
-          </li>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
         ))}
-      </ul>
-
-      <h2>Popular Books</h2>
-      {books.map(book => (
-        <div key={book.id}>
-          <h3>{book.title}</h3>
-          <Link to={`/book/${book.id}`}>View Details</Link>
-        </div>
-      ))}
-    </>
+      </div>
+    </div>
   );
 };
 

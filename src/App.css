@@ -136,3 +136,19 @@ input[type="text"] {
   color: #2563eb;
   font-weight: 600;
 }
+
+
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+}
+
+.object-cover {
+  width: 250px;
+  height: 250px;
+}
+
+.text {
+  flex-wrap: wrap;
+}
